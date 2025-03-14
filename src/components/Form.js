@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import logo from "../../assets/logo.png";
 
 export default function Form() {
     const navigation = useNavigation();
@@ -30,42 +31,47 @@ export default function Form() {
     };
 
     return (
-        <View style={styles.container}>
-            <View>
-                <Text>Produto</Text>
-                <TextInput
-                    onChangeText={setName}
-                    value={name}
-                    placeholder="Digite o nome do produto"
-                />
+        <>
+            <View style={styles.container}>
+                <View style={{ padding: 20 }}>
+                    <Image source={logo} style={{ height: 100, width: 100 }} />
+                </View>
+                <View>
+                    <Text>Produto</Text>
+                    <TextInput
+                        onChangeText={setName}
+                        value={name}
+                        placeholder="Digite o nome do produto"
+                    />
+                </View>
+                <View>
+                    <Text>Valor do produto</Text>
+                    <TextInput
+                        onChangeText={setValue}
+                        value={value}
+                        keyboardType="numeric"
+                        placeholder="Digite o valor do produto"
+                    />
+                </View>
+                <View>
+                    <Text>Desconto</Text>
+                    <TextInput
+                        onChangeText={setDiscountValue}
+                        value={discountValue}
+                        keyboardType="numeric"
+                        placeholder="Digite o valor de desconto"
+                    />
+                </View>
+                <View>
+                    <Text style={{ color: "red" }}>
+                        {error}
+                    </Text>
+                </View>
+                <TouchableOpacity onPress={handleSubmit} style={styles.textButton}>
+                    <Text style={{ color: "#fff" }}>Calcular desconto</Text>
+                </TouchableOpacity>
             </View>
-            <View>
-                <Text>Valor do produto</Text>
-                <TextInput
-                    onChangeText={setValue}
-                    value={value}
-                    keyboardType="numeric"
-                    placeholder="Digite o valor do produto"
-                />
-            </View>
-            <View>
-                <Text>Desconto</Text>
-                <TextInput
-                    onChangeText={setDiscountValue}
-                    value={discountValue}
-                    keyboardType="numeric"
-                    placeholder="Digite o valor de desconto"
-                />
-            </View>
-            <View>
-                <Text style={{ color: "red" }}>
-                    {error}
-                </Text>
-            </View>
-            <TouchableOpacity onPress={handleSubmit} style={styles.textButton}>
-                <Text style={{ color: "#fff" }}>Calcular desconto</Text>
-            </TouchableOpacity>
-        </View>
+        </>
     );
 }
 
