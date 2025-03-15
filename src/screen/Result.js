@@ -8,20 +8,23 @@ export default function Result({ route }) {
     return (
         <View style={styles.container}>
 
-            <View>
-                <Text>
+            <View style={styles.form}>
+                <Text style={styles.label}>
+                    Resultado
+                </Text>
+                <Text style={styles.label}>
                     Nome: {name}
                 </Text>
-                <Text>
+                <Text style={styles.label}>
                     Valor original: {value}
                 </Text>
-                <Text>
+                <Text style={styles.label}>
                     Percentual de aumento: {discountValue}%
                 </Text>
-                <Text>
+                <Text style={styles.label}>
                     Valor de aumento: R$ {calculatedDiscount}
                 </Text>
-                <Text>
+                <Text style={styles.label}>
                     Valor final: {finalValue}
                 </Text>
             </View>
@@ -36,4 +39,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    label: {
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+    form: {
+        gap: 18,
+        borderWidth: 3,
+        borderColor: "#000",
+        padding: 20,
+        borderRadius: 10
+    }
 });
